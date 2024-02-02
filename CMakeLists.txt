@@ -11,10 +11,10 @@ set(CMAKE_INCLUDE_PATH ${HOME}/include)
 file(GLOB SRC ${PROJECT_SOURCE_DIR}/*.cpp)
 
 foreach(_src_cpp ${SRC})
-  string(REGEX MATCH [a-z0-9\-\_]*.cpp _src_target ${_src_cpp})
+  string(REGEX MATCH [A-Za-z0-9\-\_]*.cpp _src_target ${_src_cpp})  # extract filename
   string(LENGTH ${_src_target} _src_len)
   math(EXPR _src_len "${_src_len}-4")
-  string(SUBSTRING ${_src_target} 0 ${_src_len} _src_target)
+  string(SUBSTRING ${_src_target} 0 ${_src_len} _src_target)  #extract filename without extension
   message("${_src_cpp} -> ${_src_target}")
-  add_executable(${_src_target} ${_src_cpp})
+  add_executable(${_src_target} ${_src_cpp})  #add target
 endforeach(_src_cpp ${SRC})
