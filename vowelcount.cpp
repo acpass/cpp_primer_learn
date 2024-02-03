@@ -1,13 +1,22 @@
 #include <iostream>
 using namespace std;
 
-enum {ACount=0,ECount,ICount,OCount,UCount};
+enum
+{
+  ACount = 0,
+  ECount,
+  ICount,
+  OCount,
+  UCount
+};
 
-int main(int argc, char **argv){
+int main(int argc, char **argv)
+{
   string str;
-  getline(cin,str);
-  int count[5]{0,0,0,0,0};
-  for(auto &i:str){
+  getline(cin, str);
+  int count[5]{0, 0, 0, 0, 0};
+  for (auto &i : str)
+  {
     switch (i)
     {
     case 'a':
@@ -30,11 +39,11 @@ int main(int argc, char **argv){
     }
   }
 
-  cout<<"count of a: "<<count[ACount]<<endl;
-  cout<<"count of e: "<<count[ECount]<<endl;
-  cout<<"count of i: "<<count[ICount]<<endl;
-  cout<<"count of o: "<<count[OCount]<<endl;
-  cout<<"count of u: "<<count[UCount]<<endl;
+  cout << "count of a: " << count[ACount] << endl;
+  cout << "count of e: " << count[ECount] << endl;
+  cout << "count of i: " << count[ICount] << endl;
+  cout << "count of o: " << count[OCount] << endl;
+  cout << "count of u: " << count[UCount] << endl;
 
   return 0;
 }
