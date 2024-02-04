@@ -6,9 +6,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(HOME ${PROJECT_SOURCE_DIR})
 set(EXECUTABLE_OUTPUT_PATH ${HOME}/bin)
 set(PROJECT_BINARY_DIR ${HOME}/build)
-set(CMAKE_INCLUDE_PATH ${HOME}/include)
+include_directories(${HOME}/include)
 
-file(GLOB SRC ${PROJECT_SOURCE_DIR}/*.cpp)
+file(GLOB SRC ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
 foreach(_src_cpp ${SRC})
   string(REGEX MATCH [A-Za-z0-9\-\_]+.cpp _src_target ${_src_cpp})  # extract filename
@@ -18,3 +18,22 @@ foreach(_src_cpp ${SRC})
   message("${_src_cpp} -> ${_src_target}")
   add_executable(${_src_target} ${_src_cpp})  #add target
 endforeach(_src_cpp ${SRC})
+
+file(GLOB children ${PROJECT_SOURCE_DIR}/src/*)
+# 过滤出所有的子目录
+set(DIRLIST "")
+foreach(child ${children})
+    if(IS_DIRECTORY ${child})
+        list(APPEND DIRLIST ${child})
+    endif()
+endforeach()
+
+# 输出所有子目录
+foreach(dir ${DIRLIST})
+    string(REGEX MATCH /[A-Za-z0-9\-\_]+$ dir_name ${dir})
+    string(SUBSTRING ${dir_name} 1 -1 dir_name)
+    file(GLOB subsrc ${dir}/*.cpp)
+    file(GLOB subsrc_rela RELATIVE ${dir} ${dir}/*.cpp)
+    message("ADD PROJ \"${dir_name}\" from: ${subsrc_rela}")
+    add_executable(${dir_name} ${subsrc})
+endforeach()
