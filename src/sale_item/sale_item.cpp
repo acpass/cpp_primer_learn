@@ -5,7 +5,9 @@
 
 Sale_item add(const Sale_item &item1, const Sale_item &item2)
 {
-  return item1;
+  Sale_item ret(item1);
+  ret.combine(item2);
+  return ret;
 }
 
 decltype(std::cout) &print(std::ostream &os, const Sale_item &item)
@@ -30,7 +32,7 @@ decltype(std::cin) &read(std::istream &is, Sale_item &item)
     catch (std::runtime_error err)
     {
       std::cerr << err.what() << std::endl;
-      std::cerr << "input again: ";
+      std::cerr << "input price again: ";
       is >> price;
       continue;
     }

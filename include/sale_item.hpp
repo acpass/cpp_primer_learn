@@ -19,7 +19,7 @@ struct Sale_item
   !! so a const Sale_item object can't be used to involke combine function
   */
   Sale_item &combine(const Sale_item &);
-  double avg_price() const { return 0; };
+  double avg_price() const { return unit_sold == 0 ? 0 : revenue / unit_sold; };
 };
 
 Sale_item add(const Sale_item &, const Sale_item &);
