@@ -53,3 +53,19 @@ std::ostream &print(std::ostream &os, const Screen &scr)
   std::cout.flush();
   return os;
 }
+
+class scope_test
+{
+private:
+  int test;
+
+public:
+  int test_fn(char);
+};
+
+double test;
+
+int scope_test::test_fn(char test1)
+{
+  test; // because the funtion body is in the scope of class scope_test, the test refer to the member var test
+}

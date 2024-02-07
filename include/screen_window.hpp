@@ -10,6 +10,7 @@ class Windows
 public:
   using ScreenIndex = std::vector<Screen>::size_type;
   void clean(ScreenIndex);
+  ScreenIndex ret_a_scope_name(ScreenIndex);
 
 private:
   std::vector<Screen> screens{Screen("abcdefghijk", 5, 5)};
@@ -70,7 +71,9 @@ public:
   friend std::ostream &print(std::ostream &os, const Screen &scr);
 
   // q: why we can use ScreenIndex to declare the parameter of clean, as it's a type alias in Windows class' scope
+  // a: because once beyond the the windows:: make the scope be seen, the remain of the declaration can see the scope
   friend void Windows::clean(ScreenIndex);
+  friend Windows::ScreenIndex Windows::ret_a_scope_name(ScreenIndex);
 };
 
 std::istream &read(std::istream &is, Screen &scr);
