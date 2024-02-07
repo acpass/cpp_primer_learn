@@ -10,13 +10,13 @@ Sale_item add(const Sale_item &item1, const Sale_item &item2)
   return ret;
 }
 
-decltype(std::cout) &print(std::ostream &os, const Sale_item &item)
+std::ostream &print(std::ostream &os, const Sale_item &item)
 {
   os << item.isbn() << " " << item.unit_sold << " " << item.revenue << " " << item.avg_price();
   return os;
 }
 
-decltype(std::cin) &read(std::istream &is, Sale_item &item)
+std::istream &read(std::istream &is, Sale_item &item)
 {
   double price = 0;
   is >> item.BookNO >> price >> item.unit_sold;
