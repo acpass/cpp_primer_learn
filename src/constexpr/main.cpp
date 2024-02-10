@@ -14,8 +14,11 @@ int main()
   SHOW(POINTER1);
   SHOW(POINTER2);
 
-  constexpr test_class obj(1);
-  constexpr int d = obj.get();
+  constexpr test_class obj(1, 2);
+  constexpr int d = obj.get_a();
+  // next line is illegal because a mutable var can not be use in a constexpr class obj
+  // constexpr int e = obj.get_ma();
+
   SHOW(d);
   return 0;
 }

@@ -27,20 +27,30 @@ class test_class
 {
 private:
   int a;
+  mutable int ma;
 
 public:
-  constexpr test_class(int b)
-      : a(b){};
-  test_class()
-      : a(1){};
+  constexpr test_class(int b, int c)
+      : a(b), ma(c){};
+  constexpr test_class()
+      : test_class(1, 2){};
 
-  void set(int b)
+  void set(int b, int c)
   {
     a = b;
+    ma = c;
   }
-  constexpr int get() const
+  void set_m(int b)
+  {
+    ma = b;
+  }
+  constexpr int get_a() const
   {
     return a;
+  }
+  constexpr int get_ma()
+  {
+    return ma;
   }
 };
 
