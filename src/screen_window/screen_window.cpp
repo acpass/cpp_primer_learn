@@ -68,4 +68,5 @@ double test;
 int scope_test::test_fn(char test1)
 {
   test; // because the funtion body is in the scope of class scope_test, the test refer to the member var test
+  return test1;
 }
