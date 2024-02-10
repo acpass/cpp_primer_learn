@@ -13,5 +13,9 @@ int main()
   SHOW(POI);
   SHOW(POINTER1);
   SHOW(POINTER2);
+
+  constexpr test_class obj(1);
+  constexpr int d = obj.get();
+  SHOW(d);
   return 0;
 }
