@@ -16,11 +16,11 @@ private:
 public:
   // constructors-------------
   //  default constructor
-  Sale_item() = default;
-  Sale_item(const std::string &s)
-      : BookNO(s) {}
   Sale_item(const std::string &s, unsigned int unit, double price)
       : BookNO(s), unit_sold(unit), revenue(price * unit) {}
+  Sale_item() : Sale_item("", 0, 0.0){};
+  Sale_item(const std::string &s)
+      : Sale_item(s, 0, 0.0) {}
   Sale_item(std::istream &is);
   // constructors------------
 
@@ -55,6 +55,7 @@ inline Sale_item &Sale_item::combine(const Sale_item &item)
 }
 
 inline Sale_item::Sale_item(std::istream &is)
+    : Sale_item()
 {
   read(is, *this);
 }

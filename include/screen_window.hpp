@@ -5,6 +5,8 @@
 #include <iostream>
 #include <vector>
 
+class Screen;
+
 class Windows
 {
 public:
@@ -13,7 +15,7 @@ public:
   ScreenIndex ret_a_scope_name(ScreenIndex);
 
 private:
-  std::vector<Screen> screens{Screen("abcdefghijk", 5, 5)};
+  std::vector<Screen> screens;
 };
 
 class Screen
