@@ -34,16 +34,38 @@ int main()
       map.push_back(pair);
   }
 
-  for (auto i : map)
+  for (const auto &i : map)
   {
     cout << "key: " << i.key << " datas:";
-    for (auto data : i.data)
+    for (const auto &data : i.data)
     {
       cout << " " << data;
     }
     cout << '\n';
   }
-  cout.flush();
+  cout << endl;
+
+  for (const auto &i : map)
+  {
+    int valid = 1;
+    ostringstream out_record;
+    out_record << i.key << ' ';
+    if (i.data.empty())
+      valid = 0;
+    for (const auto &num : i.data)
+    {
+      if (num[0] != '1')
+        out_record << num << ' ';
+      else
+      {
+        valid = 0;
+        break;
+      }
+    }
+    if (valid)
+      cout << out_record.str() << '\n';
+  }
+  cout << endl;
 
   return 0;
 }
