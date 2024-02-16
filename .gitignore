@@ -5,4 +5,4 @@
 /cmake_install.cmake
 /CMakeFiles/*
 /CMakeCache.txt
-/test_file/*
+/test_file/write/*
