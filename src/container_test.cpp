@@ -57,5 +57,20 @@ int main()
   }
   cout << endl;
 
+  vector<string> sv;
+  sv.push_back("123");
+  sv.emplace_back("1234");
+  sv.emplace_back(12, 'a');
+
+  auto sit = sv.begin();
+  sit = sv.insert(sit, "1234");
+  sit = sv.emplace(sit, 12, 'c');
+  for (auto i : sv)
+  {
+    cout << i << ' ';
+  }
+
+  cout << endl;
+
   return 0;
 }
