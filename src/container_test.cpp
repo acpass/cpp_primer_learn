@@ -41,7 +41,7 @@ int main()
 
   array<int, 100> arr{1, 1, 1};                      // value-init
   array<int, 100> arr_default;                       // default-init
-  cout << arr[50] << ' ' << arr_default[50] << endl; // both of which are initialized to 0;
+  cout << arr[50] << ' ' << arr_default[50] << endl; // both of which are initialized to 0;  in another environment, the later one is not initialized
   arr = arr_default;                                 // not as same as built-in array, copy
   arr[2] = 10;
   arr = {0, 1}; // assignment, it should not be allowed but no warning or error
