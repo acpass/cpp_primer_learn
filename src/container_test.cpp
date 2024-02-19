@@ -2,6 +2,8 @@
 #include <iostream>
 #include <deque>
 #include <array>
+#include <stdexcept>
+#include <forward_list>
 using namespace std;
 
 int main()
@@ -51,11 +53,84 @@ int main()
   vector<int> vec1{1, 2, 3}, vec2{4, 5, 6, 7, 8};
   auto vecb = vec1.begin(), vece = vec1.end();
   swap(vec1, vec2); // do not change the former iter
+
+  vec2.front() = 5; // return a ref, so we can change it
+
   for (; vecb != vece; vecb++)
   {
     cout << *vecb << ' ';
   }
   cout << endl;
+
+  try
+  {
+    cout << vec1.at(50) << endl;
+  }
+  catch (out_of_range err)
+  {
+    cout << err.what() << endl;
+  }
+
+  forward_list<int> fl{1, 2, 3, 4, 5};
+
+  auto fl_beg = fl.begin(), fl_end = fl.end();
+
+  fl.push_front(8);
+
+  fl.insert_after(fl_beg, 12); // insert after iter
+
+  for (; fl_beg != fl_end; fl_beg++)
+    cout << *fl_beg << ' ';
+
+  cout << endl;
+
+  for (auto i : fl)
+    cout << i << ' ';
+
+  cout << endl;
+
+  vector<int> vec_insert{1, 2, 3};
+
+  auto insert_iter = vec_insert.begin() + 1;
+  cout << *insert_iter << endl;
+  vec_insert.insert(insert_iter, 12); // insert before iter
+
+  auto a1 = fl.front();
+  decltype(fl.front()) a2 = fl.front(); // decltype return a type of the ref, but auto return the origin type which is int;
+
+  vec_insert.erase(vec_insert.begin(), vec_insert.begin());
+
+  vec_insert.erase(vec_insert.end(), vec_insert.end());
+
+  for (auto i : vec_insert)
+  {
+    cout << i << ' ';
+  }
+  cout << endl;
+
+  cout << vec_insert.size() << '/' << vec_insert.capacity() << ' ';
+  vec_insert.shrink_to_fit();
+  cout << vec_insert.size() << '/' << vec_insert.capacity() << ' ';
+  vec_insert.reserve(vec_insert.size() * 2);
+  cout << vec_insert.size() << '/' << vec_insert.capacity() << ' ';
+  cout << endl;
+
+  string s1("123");
+  for (int i = 5;;)
+  {
+    try
+    {
+      string s2(s1, i);
+      cout << i << endl;
+      break;
+    }
+    catch (out_of_range err)
+    {
+      cout << err.what() << endl;
+      i--;
+      continue;
+    }
+  }
 
   return 0;
 }
