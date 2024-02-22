@@ -1,6 +1,6 @@
 #将cpp文件分别编译为同名二进制并放入bin文件夹内
 #[[框注释]]
-cmake_minimum_required(VERSION 3.22.0)
+cmake_minimum_required(VERSION 3.18.0)
 project(cpp_learn)
 set(CMAKE_CXX_STANDARD 17)
 set(HOME ${PROJECT_SOURCE_DIR})
