@@ -6,3 +6,6 @@
 /CMakeFiles/*
 /CMakeCache.txt
 /test_file/write/*
+/contest/*
+!/contest/*.cpp
+!/contest/*/*.cpp
