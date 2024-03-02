@@ -47,13 +47,13 @@ int main()
 
   string line{"12312321412318"};
   cout << line << endl;
-  sort(line.begin(), line.end(), [](char a, char b) { return a > b; });
+  sort(line.begin(), line.end(), [](char a, char b) -> bool { return a > b; });
   auto line_unique_end = unique(line.begin(), line.end());
   line.erase(line_unique_end, line.end());
   cout << line << endl;
 
   vector<string> sv{"1231231", "2131", "21312312", "3123", "2311311", "213"};
-  auto last_true = partition(sv.begin(), sv.end(), [](const string &a) { return a.size() < 5; });
+  auto last_true = partition(sv.begin(), sv.end(), [](const string &a) -> bool { return a.size() < 5; });
   for (auto i : sv)
   {
     cout << i << ' ';
