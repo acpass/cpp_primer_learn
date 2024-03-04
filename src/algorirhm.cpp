@@ -66,5 +66,13 @@ int main()
   //last_true point to the element one past the last element returned true
   cout << endl;
 
+  list<int> lst1{6, 3, 8}, lst2{1, 4, 9};
+  lst1.merge(lst2);
+  ostream_iterator<int> out_iter(cout, " ");
+  copy(lst1.cbegin(), lst1.cend(), out_iter);
+  cout << endl;
+  copy(lst2.cbegin(), lst2.cend(), out_iter); //empty
+  cout << endl;
+
   return 0;
 }
