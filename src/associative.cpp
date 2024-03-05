@@ -1,10 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool compare_global_test(int a, int b)
+struct compare_global_test
 {
-  return a > b;
-}
+  constexpr bool operator()(int a, int b) const
+  {
+    return a > b;
+  }
+};
 
 int main()
 {
@@ -12,13 +15,14 @@ int main()
   ifstream fd_in("../test_file/file1");
   if (fd_in.is_open())
   {
-    map<string, string::size_type> word_count;
+    unordered_map<string, string::size_type> word_count;
     set<string> exclude_set{"an", "the"};
     cout << exclude_set.insert("a").second << ' ';
     cout << exclude_set.insert("the").second << ' ';
     cout << endl;
     copy(exclude_set.cbegin(), exclude_set.cend(), cout_iter);
     cout << '\n';
+
     string word;
     while (fd_in >> word)
     {
@@ -28,8 +32,13 @@ int main()
       transform(out_word.begin(), out_word.end(), out_word.begin(), ::tolower);
       if (!out_word.empty() &&
           (find(exclude_set.cbegin(), exclude_set.cend(), out_word) == exclude_set.end()))
+      {
+        cout << word_count.size() << " " << word_count.bucket_count() << "/" << word_count.max_bucket_count() << " average:" << word_count.load_factor() << "/" << word_count.max_load_factor() << "\n";
         ++word_count[out_word];
+      }
     }
+
+    cout << word_count.size() << " " << word_count.bucket_count() << "/" << word_count.max_bucket_count() << '\n';
 
     word_count.emplace("able", 5);           //the insert is ignored
     word_count.insert_or_assign("woke", 10); //the insert(assign) is done
@@ -50,8 +59,8 @@ int main()
     return a > b;
   };
 
-  map<int, string, decltype(compare_global_test) *>
-      compare_spe_test_map(compare_global_test);
+  map<int, string, decltype(compare)>
+      compare_spe_test_map(compare);
 
   compare_spe_test_map = {{1, "1"}, {7, "7"}, {3, "3"}};
 
@@ -68,6 +77,7 @@ int main()
   if (fd_in.is_open())
   {
     multimap<string::size_type, string> word_size;
+    set<string> exclude_set;
     string word;
     while (fd_in >> word)
     {
@@ -75,10 +85,20 @@ int main()
       auto insert_iter = back_inserter(out_word);
       copy_if(word.begin(), word.end(), insert_iter, ::isalpha);
       transform(out_word.begin(), out_word.end(), out_word.begin(), ::tolower);
-      if (!out_word.empty())
+      if (!out_word.empty() && exclude_set.insert(out_word).second) //check if this word has existed
         word_size.emplace(out_word.size(), out_word);
     }
-    
+
+    for (auto beg = word_size.lower_bound(5), en = word_size.upper_bound(5);
+         beg != en; ++beg)
+    {
+      *cout_iter = (*beg).second;
+    }
+    cout << endl;
+    for (auto range = word_size.equal_range(6); range.first != range.second; ++(range.first))
+    {
+      *cout_iter = (*(range.first)).second;
+    }
   }
   else
   {
