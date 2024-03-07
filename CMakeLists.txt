@@ -3,6 +3,7 @@
 cmake_minimum_required(VERSION 3.18.0)
 project(cpp_learn)
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED true)
 set(HOME ${PROJECT_SOURCE_DIR})
 set(EXECUTABLE_OUTPUT_PATH ${HOME}/bin)
 set(PROJECT_BINARY_DIR ${HOME}/build)
