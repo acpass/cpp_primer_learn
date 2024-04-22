@@ -1,6 +1,22 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+struct test
+{
+  static int count;
+  int id;
+  test()
+  {
+    id = count++;
+  }
+  ~test()
+  {
+    cout << id << endl;
+  }
+};
+
+int test::count = 0;
+
 int main()
 {
   auto p1 = make_shared<int>(53);
@@ -51,12 +67,35 @@ int main()
 
   try
   {
-    auto p = new string[5]{"", "", "", "", ""};
+    int small = 1;
+    auto p = new string[small]{"", "", "", "", ""};
   }
   catch (bad_array_new_length err)
   {
     cout << err.what() << endl;
   }
+
+  auto foo = [](int *) {
+    cout << "one delete" << endl;
+  };
+
+  unique_ptr<test[]> utp(new test[5]);
+  cout << utp[0].id << endl;
+  utp.release();
+
+  allocator<string> alloc;
+  auto const alp1 = alloc.allocate(5);
+  for (auto p = alp1; p != alp1 + 5; p++)
+  {
+    alloc.construct(p, 5, 'a');
+  }
+  alloc.destroy(alp1 + 5);
+  cout << alp1[4] << endl;
+  for (auto p = alp1; p != alp1 + 5; p++)
+  {
+    alloc.destroy(p);
+  }
+  alloc.deallocate(alp1, 5);
 
   return 0;
 }
