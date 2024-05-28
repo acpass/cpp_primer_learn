@@ -2,6 +2,7 @@
 #include <iostream>
 #include <utility>
 #include <vector>
+#include <functional>
 using std::cin;
 using std::cout;
 using std::endl;
@@ -46,9 +47,13 @@ int main()
 
   auto v = lambda_obj.operator()();
 
+  std::function<int()> f1 = lambda_obj;
+
+  cout << "function return: " << f1() << endl;
+
   myclass v1(2);
 
-  cout << v1 + 1 << endl;
+  // cout << v1 + 1 << endl;
   cout << v1.operator+(1) << endl;
 
   return 0;
