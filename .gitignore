@@ -10,3 +10,4 @@
 /contest/*
 /.cache
 /.*
+!/.gitignore
