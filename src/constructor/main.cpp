@@ -1,19 +1,15 @@
 #include "constructor.hpp"
+#include <functional>
 #include <iostream>
 #include <utility>
 #include <vector>
-#include <functional>
 using std::cin;
 using std::cout;
 using std::endl;
 
-void foo(deleted_copy a)
-{
-  cout << "foo called" << endl;
-}
+void foo(deleted_copy a) { cout << "foo called" << endl; }
 
-int main()
-{
+int main() {
   cout << "1" << endl;
   deleted_copy s(1);
   int a = 1;
@@ -37,7 +33,7 @@ int main()
   cout << s1 << ' ' << sv[0] << endl;
 
   cout << cin.fail() << endl;
-  cin.setstate(std::ios_base::iostate::_S_failbit);
+  cin.setstate(std::ios_base::failbit);
   cin.clear();
   cout << cin.fail() << endl;
 
