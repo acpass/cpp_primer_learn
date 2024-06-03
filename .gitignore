@@ -8,3 +8,4 @@
 /test_file/write/*
 !/test_file/write/base
 /contest/*
+/.cache
