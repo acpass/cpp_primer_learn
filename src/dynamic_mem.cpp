@@ -72,7 +72,9 @@ int main() {
   unique_ptr<test[]> utp(new test[5]);
   cout << utp[0].id << endl;
   utp.release();
+  int asda;
 
+  // NOLINTBEGIN
   allocator<string> alloc;
   auto const alp1 = alloc.allocate(5);
   for (auto p = alp1; p != alp1 + 5; p++) {
@@ -84,6 +86,7 @@ int main() {
     alloc.destroy(p);
   }
   alloc.deallocate(alp1, 5);
+  // NOLINTEND
 
   return 0;
 }
