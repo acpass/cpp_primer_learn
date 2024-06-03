@@ -32,4 +32,5 @@ int main()
   int b = 2;
   proxy_foo(1, b, 3);
   cout << "b: " << b << endl;
+  print(cout, 1, 4, "sada", "sda", 13);
 }

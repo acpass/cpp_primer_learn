@@ -93,6 +93,7 @@ class strBlobPtr
       throw std::runtime_error("access a non_exist object");
     else if (i >= p->size())
       throw std::out_of_range(msg);
+    return p;
   }
 
 public:
@@ -114,11 +115,11 @@ public:
   }
 };
 
-strBlobPtr strBlob::begin()
+inline strBlobPtr strBlob::begin()
 {
   return strBlobPtr(*this);
 }
-strBlobPtr strBlob::end()
+inline strBlobPtr strBlob::end()
 {
   return strBlobPtr(*this, container_ptr->size());
 }

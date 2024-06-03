@@ -29,3 +29,17 @@ void proxy_foo(T1 &&a, T2 &&b, T3 &&c) //a is passed by value and the constness 
   //so arguements preserve their lvalue or rvalue property
   real_foo(std::forward<T1>(a), std::forward<T2>(b), std::forward<T3>(c));
 }
+
+template <typename T>
+void print(std::ostream &os, const T &arg)
+{
+  os << arg;
+}
+
+template <typename T, typename... Args>
+void print(std::ostream &os, const T &arg1, const Args &...args) //expansion pattern: const Args&
+{
+  os << "<pack count: " << sizeof...(Args) << ">";
+  os << arg1 << ", ";
+  print(os, args...);
+}
