@@ -1,8 +1,7 @@
-#include <iostream>
 #include "aggregate_class.hpp"
+#include <iostream>
 
-int main()
-{
+int main() {
   test_class obj1 = {1, 1, "a"};
   test_class obj2{2, 2, "b"};
   test_class obj3({3, 3, "c"});

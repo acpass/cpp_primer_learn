@@ -1,8 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int main()
-{
+int main() {
   cout << cin.tie() << endl;
   cout << unitbuf;
   cout << cin.tie() << endl;

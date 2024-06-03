@@ -3,18 +3,16 @@
 #include <string>
 using namespace std;
 
-int main()
-{
+int main() {
   ifstream file;
-  ofstream out("/root/code/CPP_learn/test_file/file2", fstream::out); // implicitly trunc mode
+  ofstream out("/root/code/CPP_learn/test_file/file2",
+               fstream::out); // implicitly trunc mode
   string str;
   // get one character per loop, but skip blanks
   file.open("/root/code/CPP_learn/test_file/file1", fstream::in);
-  if (file.is_open())
-  {
+  if (file.is_open()) {
     char c;
-    while (file >> c)
-    {
+    while (file >> c) {
       cout << c;
     }
   }

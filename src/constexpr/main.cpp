@@ -1,8 +1,7 @@
-#include <iostream>
 #include "constexpr.hpp"
+#include <iostream>
 
-int main()
-{
+int main() {
   int a = 1, b = 2;
   std::cin >> a >> b;
   std::cout << add(NUM1, NUM2) << std::endl;
@@ -16,8 +15,8 @@ int main()
 
   constexpr test_class obj(1, 2);
   constexpr int d = obj.get_a();
-  // next line is illegal because a mutable var can not be use in a constexpr class obj
-  // constexpr int e = obj.get_ma();
+  // next line is illegal because a mutable var can not be use in a constexpr
+  // class obj constexpr int e = obj.get_ma();
 
   SHOW(d);
   return 0;

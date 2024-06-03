@@ -1,8 +1,7 @@
-#include <iostream>
 #include "static_member.hpp"
+#include <iostream>
 
-int main()
-{
+int main() {
   test_class obj1, obj2;
   obj1.call_count();
   obj2.call_count();

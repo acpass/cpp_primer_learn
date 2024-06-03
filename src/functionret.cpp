@@ -3,8 +3,7 @@ using namespace std;
 
 int (*fun())(int, int);
 
-int main()
-{
+int main() {
   int (*b)(int, int) = fun();
   cout << b(1, 1) << endl;
   return 0;

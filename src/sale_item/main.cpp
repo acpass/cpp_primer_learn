@@ -1,9 +1,8 @@
+#include "sale_item.hpp"
 #include <iostream>
 #include <string>
-#include "sale_item.hpp"
 
-int main()
-{
+int main() {
   Sale_item book1(std::cin), book2(std::cin);
   // std::cout << "input book1: ";
   // read(std::cin, book1);

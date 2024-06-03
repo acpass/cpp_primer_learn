@@ -1,21 +1,18 @@
 #include "template_first.hpp"
 
-#include <string>
 #include <iostream>
+#include <string>
 
 using std::cin;
 using std::cout;
 using std::endl;
 
-void real_foo(int a, int &b, int &&c)
-{
+void real_foo(int a, int &b, int &&c) {
   b += 1;
-  cout
-      << "succussful called" << endl;
+  cout << "succussful called" << endl;
 }
 
-int main()
-{
+int main() {
   cout << template_add(1, 2) << endl;
   cout << template_add(3, 2) << endl;
   std::string s1("123"), s2("234");

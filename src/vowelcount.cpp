@@ -1,24 +1,14 @@
 #include <iostream>
 using namespace std;
 
-enum
-{
-  ACount = 0,
-  ECount,
-  ICount,
-  OCount,
-  UCount
-};
+enum { ACount = 0, ECount, ICount, OCount, UCount };
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
   string str;
   getline(cin, str);
   int count[5]{0, 0, 0, 0, 0};
-  for (auto &i : str)
-  {
-    switch (i)
-    {
+  for (auto &i : str) {
+    switch (i) {
     case 'a':
       count[ACount]++;
       break;

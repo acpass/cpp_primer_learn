@@ -5,8 +5,7 @@ using namespace std;
 void print(string);
 void print(long);
 
-int main()
-{
+int main() {
   int a = 1;
   long b = 2;
   string s = "1";
@@ -18,17 +17,8 @@ int main()
   return 0;
 }
 
-void print(string str)
-{
-  cout << "string" << endl;
-}
+void print(string str) { cout << "string" << endl; }
 
-void print(long lon)
-{
-  cout << "long" << endl;
-}
+void print(long lon) { cout << "long" << endl; }
 
-void print(int i)
-{
-  cout << "int" << endl;
-}
+void print(int i) { cout << "int" << endl; }
