@@ -1,24 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct test
-{
+struct test {
   static int count;
   int id;
-  test()
-  {
-    id = count++;
-  }
-  ~test()
-  {
-    cout << id << endl;
-  }
+  test() { id = count++; }
+  ~test() { cout << id << endl; }
 };
 
 int test::count = 0;
 
-int main()
-{
+int main() {
   auto p1 = make_shared<int>(53);
   auto p2(p1);
   auto p3 = p2;
@@ -65,19 +57,15 @@ int main()
   unique_ptr<int> uq1(new int(42));
   unique_ptr<int> uq2(uq1.release());
 
-  try
-  {
-    int small = 1;
-    auto p = new string[small]{"", "", "", "", ""};
-  }
-  catch (bad_array_new_length err)
-  {
-    cout << err.what() << endl;
-  }
+  // try {
+  //   int small = 1;
+  //   auto p = new string[small]{"", "", "", "", ""};
+  //   cout << p[1] << endl;
+  // } catch (bad_array_new_length err) {
+  //   cout << err.what() << endl;
+  // }
 
-  auto foo = [](int *) {
-    cout << "one delete" << endl;
-  };
+  auto foo = [](int *) { cout << "one delete" << endl; };
 
   unique_ptr<test[]> utp(new test[5]);
   cout << utp[0].id << endl;
@@ -85,14 +73,12 @@ int main()
 
   allocator<string> alloc;
   auto const alp1 = alloc.allocate(5);
-  for (auto p = alp1; p != alp1 + 5; p++)
-  {
+  for (auto p = alp1; p != alp1 + 5; p++) {
     alloc.construct(p, 5, 'a');
   }
   alloc.destroy(alp1 + 5);
   cout << alp1[4] << endl;
-  for (auto p = alp1; p != alp1 + 5; p++)
-  {
+  for (auto p = alp1; p != alp1 + 5; p++) {
     alloc.destroy(p);
   }
   alloc.deallocate(alp1, 5);

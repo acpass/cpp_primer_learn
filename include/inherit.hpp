@@ -41,6 +41,9 @@ public:
     {
       return num * price;
     }
+    else {
+      return 0; //not implemented
+    }
   }
 };
 

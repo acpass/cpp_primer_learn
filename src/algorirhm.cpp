@@ -1,8 +1,12 @@
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <iostream>
+#include <list>
+#include <numeric>
+#include <vector>
+
 using namespace std;
 
-int main()
-{
+int main() {
   int a[]{1, 2, 3, 4, 5, 6, 7};
   auto ans = find(begin(a), end(a), 4);
   if (ans != end(a))
@@ -22,14 +26,14 @@ int main()
   *insert_iter = 'b';
   *insert_iter = 'c';
   cout << sum << endl;
-  //following codes are wrong, because a deref to a insert_iter call a member named exactly push_back(...)
-  //but forward_list does not have such member
-  // forward_list<int> flst{1, 2, 3};
-  // for (auto i : flst)
-  // {
-  //   cout << i << ' ';
-  // }
-  // cout << endl;
+  // following codes are wrong, because a deref to a insert_iter call a member
+  // named exactly push_back(...) but forward_list does not have such member
+  //  forward_list<int> flst{1, 2, 3};
+  //  for (auto i : flst)
+  //  {
+  //    cout << i << ' ';
+  //  }
+  //  cout << endl;
 
   // auto forward_insert_iter = back_inserter(flst);
   // *forward_insert_iter = 4;
@@ -42,7 +46,9 @@ int main()
 
   string dest;
   auto dest_insert = back_inserter(dest);
-  copy(sum.cbegin(), sum.cend(), dest_insert); //+ is overloaded for a insert iterator, which return the iterator itself
+  copy(sum.cbegin(), sum.cend(),
+       dest_insert); //+ is overloaded for a insert iterator, which return the
+                     // iterator itself
   cout << dest << endl;
 
   string line{"12312321412318"};
@@ -53,17 +59,17 @@ int main()
   cout << line << endl;
 
   vector<string> sv{"1231231", "2131", "21312312", "3123", "2311311", "213"};
-  auto last_true = partition(sv.begin(), sv.end(), [](const string &a) -> bool { return a.size() < 5; });
-  for (auto i : sv)
-  {
+  auto last_true = partition(sv.begin(), sv.end(), [](const string &a) -> bool {
+    return a.size() < 5;
+  });
+  for (auto i : sv) {
     cout << i << ' ';
   }
   cout << endl;
-  for (; last_true != sv.end(); last_true++)
-  {
+  for (; last_true != sv.end(); last_true++) {
     cout << *last_true << ' ';
   }
-  //last_true point to the element one past the last element returned true
+  // last_true point to the element one past the last element returned true
   cout << endl;
 
   list<int> lst1{6, 3, 8}, lst2{1, 4, 9};
@@ -71,7 +77,7 @@ int main()
   ostream_iterator<int> out_iter(cout, " ");
   copy(lst1.cbegin(), lst1.cend(), out_iter);
   cout << endl;
-  copy(lst2.cbegin(), lst2.cend(), out_iter); //empty
+  copy(lst2.cbegin(), lst2.cend(), out_iter); // empty
   cout << endl;
 
   return 0;

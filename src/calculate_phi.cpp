@@ -1,16 +1,15 @@
-#include <iostream>
 #include <cmath>
+#include <iostream>
 #define _USE_MATH_DEFINES
 
 using namespace std;
 
-constexpr double R_base = 1.8 / 2;
-constexpr double theta_degree = 15;
+constexpr double R_base = 1.8f / 2.0f;
+constexpr double theta_degree = 15.0f;
 constexpr int n = 1;
-constexpr double S_whole = 12 * 12 / 2;
+constexpr double S_whole = 12.0f * 12.0f / 2.0f;
 
-int main()
-{
+int main() {
   double long_axis, short_axis;
   double S_base;
   double phi;
@@ -27,5 +26,6 @@ int main()
   cout << "Phi is " << (S_base / S_whole * n * 100) << "%\n";
 
   cout << '\n';
-  cout << "the equivalent circle's radiu is " << (R_base * sqrt(1 / sin(theta)));
+  cout << "the equivalent circle's radiu is "
+       << (R_base * sqrt(1 / sin(theta)));
 }

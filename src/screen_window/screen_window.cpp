@@ -1,43 +1,31 @@
+#include "screen_window.hpp"
 #include <iostream>
 #include <string>
-#include "screen_window.hpp"
 
-std::istream &read(std::istream &is, Screen &scr)
-{
-  return is >> scr.contents;
-}
+std::istream &read(std::istream &is, Screen &scr) { return is >> scr.contents; }
 
-std::ostream &print(std::ostream &os, const Screen &scr)
-{
+std::ostream &print(std::ostream &os, const Screen &scr) {
   Screen::pos out_hi = 1, out_wi = 1;
 
   os << "  ";
-  for (int i = 0; i < scr.width; ++i)
-  {
+  for (int i = 0; i < scr.width; ++i) {
     os << i + 1;
   }
   os << "\n\n";
 
-  for (auto i : scr.contents)
-  {
-    if (out_hi <= scr.height)
-    {
-      if (out_wi <= scr.width)
-      {
+  for (auto i : scr.contents) {
+    if (out_hi <= scr.height) {
+      if (out_wi <= scr.width) {
         if (out_wi == 1)
           os << out_hi << " ";
         os << i;
         ++out_wi;
-      }
-      else
-      {
+      } else {
         os << '\n';
         out_wi = 1;
         ++out_hi;
       }
-    }
-    else
-    {
+    } else {
       break;
     }
   }
@@ -54,8 +42,7 @@ std::ostream &print(std::ostream &os, const Screen &scr)
   return os;
 }
 
-class scope_test
-{
+class scope_test {
 private:
   int test;
 
@@ -65,8 +52,7 @@ public:
 
 double test;
 
-int scope_test::test_fn(char test1)
-{
-  test; // because the funtion body is in the scope of class scope_test, the test refer to the member var test
+int scope_test::test_fn(char test1) {
+  std::cout << test << std::endl;
   return test1;
 }

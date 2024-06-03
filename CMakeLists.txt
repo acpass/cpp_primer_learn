@@ -2,11 +2,14 @@
 #[[框注释]]
 cmake_minimum_required(VERSION 3.18.0)
 project(cpp_learn)
-set(CMAKE_CXX_STANDARD 17)
+# set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD_REQUIRED true)
 set(HOME ${PROJECT_SOURCE_DIR})
 set(EXECUTABLE_OUTPUT_PATH ${HOME}/bin)
 set(PROJECT_BINARY_DIR ${HOME}/build)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -stdlib=libc++")
+message(${CMAKE_CXX_FLAGS})
 include_directories(${HOME}/include)
 
 file(GLOB SRC ${PROJECT_SOURCE_DIR}/src/*.cpp)

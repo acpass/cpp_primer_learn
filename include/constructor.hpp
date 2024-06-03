@@ -2,52 +2,40 @@
 #include <iostream>
 #include <string>
 
-class Constructor
-{
+class Constructor {
   int a;
 
 public:
   Constructor(int x) : a(x) {}
-  Constructor(const Constructor &c) : a(c.a)
-  {
+  Constructor(const Constructor &c) : a(c.a) {
     std::cout << "Copy constructor called" << std::endl;
   }
   Constructor &operator=(const Constructor &c);
 };
 
-class strptr_in
-{
+class strptr_in {
   std::string *ptr = nullptr;
   int count = 0;
 
 public:
   strptr_in(std::string str = std::string())
-      : ptr(new std::string(str)), count(str.length())
-  {
-  }
+      : ptr(new std::string(str)), count(str.length()) {}
 
   strptr_in(const strptr_in &obj)
-      : ptr(new std::string(*obj.ptr)), count(obj.count)
-  {
-  }
+      : ptr(new std::string(*obj.ptr)), count(obj.count) {}
 
-  strptr_in &operator=(const strptr_in &obj)
-  {
+  strptr_in &operator=(const strptr_in &obj) {
     auto newptr = new std::string(*obj.ptr);
     count = obj.count;
     delete ptr;
-    ptr = newptr; //for self assignment
+    ptr = newptr; // for self assignment
     return *this;
   }
 
-  ~strptr_in()
-  {
-    delete ptr;
-  }
+  ~strptr_in() { delete ptr; }
 };
 
-class deleted_copy
-{
+class deleted_copy {
   int a;
 
 public:
@@ -57,36 +45,29 @@ public:
   ~deleted_copy() = default;
 };
 
-class own_shared_ptr
-{
+class own_shared_ptr {
   std::string *ptr;
   int *ref_cnt;
 
 public:
   own_shared_ptr(std::string str = std::string())
-      : ptr(new std::string(str)), ref_cnt(new int(1))
-  {
-  }
+      : ptr(new std::string(str)), ref_cnt(new int(1)) {}
 
-  own_shared_ptr(const own_shared_ptr &obj)
-  {
+  own_shared_ptr(const own_shared_ptr &obj) {
     ptr = obj.ptr;
     ref_cnt = obj.ref_cnt;
     *obj.ref_cnt += 1;
   }
 
-  ~own_shared_ptr()
-  {
+  ~own_shared_ptr() {
     *ref_cnt -= 1;
-    if (*ref_cnt == 0)
-    {
+    if (*ref_cnt == 0) {
       delete ptr;
       delete ref_cnt;
     }
   }
 
-  own_shared_ptr &operator=(const own_shared_ptr &obj)
-  {
+  own_shared_ptr &operator=(const own_shared_ptr &obj) {
 
     *ref_cnt -= 1;
     auto old_cnt = ref_cnt;
@@ -94,8 +75,7 @@ public:
     ptr = obj.ptr;
     ref_cnt = obj.ref_cnt;
     *this->ref_cnt += 1;
-    if (*old_cnt == 0)
-    {
+    if (*old_cnt == 0) {
       delete old_ptr;
       delete old_cnt;
     }
@@ -103,8 +83,7 @@ public:
   }
 };
 
-class Y_without_move
-{
+class Y_without_move {
   int a;
 
 public:
@@ -115,8 +94,7 @@ public:
   friend class hasY;
 };
 
-class hasY
-{
+class hasY {
   Y_without_move y;
 
 public:
@@ -125,27 +103,19 @@ public:
   // hasY(hasY &&y) = delete;
 };
 
-class hasYptr
-{
+class hasYptr {
   hasY *ptr;
 
 public:
   hasYptr(hasY *p) : ptr(p) {}
 
-  hasY &operator*()
-  {
-    return *this->ptr;
-  }
+  hasY &operator*() { return *this->ptr; }
 
-  //for Yptr->print(), the compiler unroll it to (*return_ptr).print()
-  hasY *operator->()
-  {
-    return this->ptr;
-  }
+  // for Yptr->print(), the compiler unroll it to (*return_ptr).print()
+  hasY *operator->() { return this->ptr; }
 };
 
-class myclass
-{
+class myclass {
   int a;
 
 public:
@@ -156,32 +126,27 @@ public:
   //   return a;
   // }
 
-  myclass &operator+=(int rhs)
-  {
+  myclass &operator+=(int rhs) {
     this->a += rhs;
     return *this;
   }
 
-  myclass operator+(int rhs) const
-  {
+  myclass operator+(int rhs) const {
     myclass ret = *this;
     return ret += rhs;
   }
 
-  friend myclass operator+(const myclass &lhs, int rhs)
-  {
+  friend myclass operator+(const myclass &lhs, int rhs) {
     myclass ret = lhs;
     return ret += rhs;
   }
 
-  friend myclass operator+(int lhs, const myclass &rhs)
-  {
+  friend myclass operator+(int lhs, const myclass &rhs) {
     myclass ret = rhs;
     return ret += lhs;
   }
 
-  friend std::ostream &operator<<(std::ostream &os, const myclass &obj)
-  {
+  friend std::ostream &operator<<(std::ostream &os, const myclass &obj) {
     os << obj.a;
     return os;
   }
