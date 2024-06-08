@@ -3,7 +3,6 @@
 #include <iostream>
 #include <map>
 #include <string>
-#include <vector>
 
 class base_book {
   std::string _isbn;

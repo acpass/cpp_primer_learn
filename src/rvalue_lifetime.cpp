@@ -1,4 +1,3 @@
-#include <algorithm>
 #include <iostream>
 // include the library of epoll
 #include <sys/epoll.h>
@@ -67,10 +66,6 @@ int main() {
   demo_quick_sort();
   test_lvalue(A());
   test_lvalue(std::move(A()));
-  // why std::move(A()) is not moved
-  // because the return value of std::move(A()) is a rvalue reference, and the
-  // parameter of test_lvalue is a const lvalue reference, so the rvalue
-  // reference will be converted to a lvalue reference
 
   return 0;
 }

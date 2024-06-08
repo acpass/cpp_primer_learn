@@ -1,6 +1,8 @@
 #include "constructor.hpp"
 #include <functional>
 #include <iostream>
+#include <string>
+#include <tuple>
 #include <utility>
 #include <vector>
 using std::cin;
@@ -51,6 +53,14 @@ int main() {
 
   // cout << v1 + 1 << endl;
   cout << v1.operator+(1) << endl;
+
+  Init_Assign ia1(1);
+  Init_Assign ia2 = ia1;
+  Init_Assign ia3 = 1;
+  ia3 = 2;
+  Init_Assign ia4{1};
+
+  std::tuple<int, double, std::string> tup = {1, 2.5, "123"};
 
   return 0;
 }

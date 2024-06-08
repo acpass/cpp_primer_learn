@@ -1,4 +1,5 @@
 #pragma once
+#include <initializer_list>
 #include <iostream>
 #include <string>
 
@@ -119,7 +120,7 @@ class myclass {
   int a;
 
 public:
-  explicit myclass(int v) : a(v){};
+  explicit myclass(int v) : a(v) {};
 
   // operator int() const
   // {
@@ -149,5 +150,30 @@ public:
   friend std::ostream &operator<<(std::ostream &os, const myclass &obj) {
     os << obj.a;
     return os;
+  }
+};
+
+class Init_Assign {
+  int a;
+
+public:
+  Init_Assign(int v = 0) : a(v) {
+    std::cout << "Init_Assign(int v = 0)" << std::endl;
+  }
+  Init_Assign(const Init_Assign &obj) : a(obj.a) {
+    std::cout << "Init_Assign(const Init_Assign &obj)" << std::endl;
+  }
+  Init_Assign(std::initializer_list<int> il) : a(*il.begin()) {
+    std::cout << "Init_Assign(std::initializer_list<int> il)" << std::endl;
+  }
+  Init_Assign &operator=(const Init_Assign &obj) {
+    a = obj.a;
+    std::cout << "Init_Assign operator(obj)" << std::endl;
+    return *this;
+  }
+  Init_Assign &operator=(int v) {
+    a = v;
+    std::cout << "Init_Assign operator(int v)" << std::endl;
+    return *this;
   }
 };
