@@ -1,9 +1,11 @@
 #include <fstream>
 #include <iostream>
+#include <iterator>
 #include <map>
 #include <set>
 #include <sstream>
 #include <string>
+#include <unordered_map>
 
 using namespace std;
 

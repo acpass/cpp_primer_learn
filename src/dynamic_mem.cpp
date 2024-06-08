@@ -1,5 +1,6 @@
 #include <iostream>
 #include <memory>
+#include <vector>
 
 using namespace std;
 
@@ -78,12 +79,12 @@ int main() {
   allocator<string> alloc;
   auto const alp1 = alloc.allocate(5);
   for (auto p = alp1; p != alp1 + 5; p++) {
-    alloc.construct(p, 5, 'a');
+    construct_at(p, 5, 'a');
   }
-  alloc.destroy(alp1 + 5);
+  destroy_at(alp1 + 5);
   cout << alp1[4] << endl;
   for (auto p = alp1; p != alp1 + 5; p++) {
-    alloc.destroy(p);
+    destroy_at(p);
   }
   alloc.deallocate(alp1, 5);
   // NOLINTEND

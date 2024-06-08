@@ -1,3 +1,4 @@
+#include <functional>
 #include <iostream>
 #include <vector>
 
@@ -58,7 +59,7 @@ int main() {
       [](int first, int second) { cout << first << ' ' << second << endl; }, _1,
       8);
 
-  auto newCallable2 = bind(show, _1, 9);
+  auto newCallable2 = bind(show, placeholders::_1, 9);
 
   newCallable(2);
   newCallable2(3);
