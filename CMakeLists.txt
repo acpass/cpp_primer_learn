@@ -23,7 +23,7 @@ endif()
 message(${CMAKE_CXX_FLAGS})
 include_directories(${HOME}/include)
 
-file(GLOB SRC ${PROJECT_SOURCE_DIR}/src/*.cpp)
+file(GLOB SRC RELATIVE ${PROJECT_SOURCE_DIR}/src ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
 foreach(_src_cpp ${SRC})
   string(REGEX MATCH [A-Za-z0-9\-\_]+.cpp _src_target ${_src_cpp}) # extract
@@ -34,7 +34,7 @@ foreach(_src_cpp ${SRC})
   string(SUBSTRING ${_src_target} 0 ${_src_len} _src_target) # extract filename
                                                              # without extension
   message("${_src_cpp} -> ${_src_target}")
-  add_executable(${_src_target} ${_src_cpp}) # add target
+  add_executable(${_src_target} ${PROJECT_SOURCE_DIR}/src/${_src_cpp}) # add target
 endforeach(_src_cpp ${SRC})
 
 file(GLOB children ${PROJECT_SOURCE_DIR}/src/*)
