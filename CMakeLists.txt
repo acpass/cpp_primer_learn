@@ -13,9 +13,10 @@ set(CMAKE_CXX_FLAGS
 )
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
-find_package(Boost COMPONENTS system filesystem)
+find_package(Boost REQUIRED COMPONENTS)
 
 if(Boost_FOUND)
+  message("Boost found")
   include_directories(${Boost_INCLUDE_DIRS})
   link_directories(${Boost_LIBRARY_DIRS})
 endif()
