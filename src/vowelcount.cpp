@@ -3,7 +3,7 @@ using namespace std;
 
 enum { ACount = 0, ECount, ICount, OCount, UCount };
 
-int main(int argc, char **argv) {
+int main(int, char **) {
   string str;
   getline(cin, str);
   int count[5]{0, 0, 0, 0, 0};

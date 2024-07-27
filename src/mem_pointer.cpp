@@ -15,7 +15,7 @@ public:
 
 int main() {
   std::cout << "Hello, Capilot!" << std::endl;
-  int a = 1, b = 2;
+  // int a = 1, b = 2;
   std::string c = "Hello, ", d = "Capilot!";
   std::cout << add_two(c, d) << std::endl; // Hello, Capilot!
 

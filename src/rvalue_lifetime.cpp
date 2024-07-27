@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <iostream>
 // include the library of epoll
 #include <sys/epoll.h>
@@ -55,7 +56,7 @@ void quick_sort(int *arr, int left, int right) {
 void demo_quick_sort() {
   int arr[] = {3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5};
   quick_sort(arr, 0, sizeof(arr) / sizeof(arr[0]) - 1);
-  for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
+  for (std::size_t i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
     std::cout << arr[i] << " ";
   std::cout << std::endl;
 }

@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <iostream>
 #include <stdexcept>
 #include <string>
@@ -7,7 +8,7 @@ using namespace std;
 int main() {
   vector v = {1, 2, 3};
   int arr[3] = {1, 2, 3};
-  for (int i = 0; i <= 5; i++) {
+  for (std::size_t i = 0; i <= 5; i++) {
     try {
       if (i > (v.size() - 1) || i > (sizeof(arr) - 1))
         throw out_of_range("big index");

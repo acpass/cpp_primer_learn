@@ -1,9 +1,9 @@
 #include <iostream>
 using namespace std;
 
-void print(int a) { cout << __func__ << endl; }
+void print(int) { cout << __func__ << endl; }
 
-void print(long a) { cout << __func__ << endl; }
+void print(long) { cout << __func__ << endl; }
 
 int main() {
   print(static_cast<int>(1));

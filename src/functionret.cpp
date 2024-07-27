@@ -9,6 +9,6 @@ int main() {
   return 0;
 }
 
-int a(int s, int h) { return 1; }
+int a(int, int) { return 1; }
 
 int (*fun())(int, int) { return a; }

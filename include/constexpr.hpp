@@ -11,7 +11,7 @@ constexpr int NUM1 = 2;
 constexpr int NUM2 = 3;
 constexpr int *POINTER1 = nullptr;
 constexpr const int *POINTER2 = &NUM1; // constexpr indicate a top-level const
-constexpr int (*POI)() = main;
+// constexpr int (*POI)() = main;
 
 // constexpr function: return type and parameter types must be all literal types
 // it can be used to add two non-const nums and return a non-const num

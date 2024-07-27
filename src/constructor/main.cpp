@@ -9,7 +9,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-void foo(deleted_copy a) { cout << "foo called" << endl; }
+void foo(deleted_copy) { cout << "foo called" << endl; }
 
 int main() {
   cout << "1" << endl;
@@ -43,7 +43,7 @@ int main() {
 
   auto lambda_obj = [captured_v]() -> int { return captured_v; };
 
-  auto v = lambda_obj.operator()();
+  // auto v = lambda_obj.operator()();
 
   std::function<int()> f1 = lambda_obj;
 

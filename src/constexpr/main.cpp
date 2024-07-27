@@ -9,7 +9,7 @@ int main() {
   std::cout << add(a, b) << std::endl;
   constexpr int c = add(NUM1, NUM2);
   std::cout << c << std::endl;
-  SHOW(POI);
+  // SHOW(POI);
   SHOW(POINTER1);
   SHOW(POINTER2);
 

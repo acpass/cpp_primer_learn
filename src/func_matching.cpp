@@ -1,11 +1,11 @@
 #include <iostream>
 using namespace std;
 
-void func(long a) { cout << __func__ << endl; }
+void func(long) { cout << __func__ << endl; }
 
-void func(short a) { cout << __func__ << endl; }
+void func(short) { cout << __func__ << endl; }
 
-void func(int a) {
+void func(int) {
   cout << __func__ << endl;
   cout << 1 << endl;
 }

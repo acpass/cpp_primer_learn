@@ -12,7 +12,6 @@ constexpr double S_whole = 12.0f * 12.0f / 2.0f;
 int main() {
   double long_axis, short_axis;
   double S_base;
-  double phi;
 
   constexpr double pi = M_PI;
   constexpr double theta = (theta_degree / 360) * 2 * pi;

@@ -1,4 +1,5 @@
 #include "screen_window.hpp"
+#include <cstddef>
 #include <iostream>
 #include <string>
 
@@ -8,7 +9,7 @@ std::ostream &print(std::ostream &os, const Screen &scr) {
   Screen::pos out_hi = 1, out_wi = 1;
 
   os << "  ";
-  for (int i = 0; i < scr.width; ++i) {
+  for (std::size_t i = 0; i < scr.width; ++i) {
     os << i + 1;
   }
   os << "\n\n";

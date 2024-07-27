@@ -27,7 +27,7 @@ int main() {
   cout << p4.use_count() << endl;
   cout << &p4_obj_ref << endl;
 
-  auto &p4_ref = p4;
+  // auto &p4_ref = p4;
   cout << p4.use_count() << endl;
   // try
   // {
@@ -68,12 +68,12 @@ int main() {
   //   cout << err.what() << endl;
   // }
 
-  auto foo = [](int *) { cout << "one delete" << endl; };
+  // auto foo = [](int *) { cout << "one delete" << endl; };
 
   unique_ptr<test[]> utp(new test[5]);
   cout << utp[0].id << endl;
   utp.release();
-  int asda;
+  // int asda;
 
   // NOLINTBEGIN
   allocator<string> alloc;

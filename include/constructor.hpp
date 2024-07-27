@@ -1,6 +1,7 @@
 #pragma once
 #include <initializer_list>
 #include <iostream>
+#include <print>
 #include <string>
 
 class Constructor {
@@ -40,7 +41,7 @@ class deleted_copy {
   int a;
 
 public:
-  deleted_copy(int x) : a(x) {}
+  deleted_copy(int x) : a(x) { std::println("{}", a); }
   deleted_copy(const deleted_copy &) = delete;
   deleted_copy &operator=(const deleted_copy &) = delete;
   ~deleted_copy() = default;

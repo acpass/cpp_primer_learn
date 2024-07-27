@@ -9,7 +9,7 @@ set(HOME ${PROJECT_SOURCE_DIR})
 set(EXECUTABLE_OUTPUT_PATH ${HOME}/bin)
 set(PROJECT_BINARY_DIR ${HOME}/build)
 set(CMAKE_CXX_FLAGS
-    "${CMAKE_CXX_FLAGS} -std=c++23 -stdlib=libstdc++ -Wno-unused-but-set-variable -Wno-deprecated-declarations"
+    "${CMAKE_CXX_FLAGS} -std=c++23 -stdlib=libstdc++ -Wall -Wextra -Wpedantic -Werror"
 )
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 

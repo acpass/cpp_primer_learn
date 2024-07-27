@@ -7,9 +7,9 @@ public:
 
   template <typename... ARGS>
   RAIIthread(Policy p, ARGS &&...args)
-      : t(std::forward<ARGS>(args)...), policy(p) {}
+      : policy(p), t(std::forward<ARGS>(args)...) {}
 
-  RAIIthread(RAIIthread &&t) : t(std::move(t.t)), policy(t.policy) {}
+  RAIIthread(RAIIthread &&t) : policy(t.policy), t(std::move(t.t)) {}
 
   ~RAIIthread() {
     if (t.joinable()) {

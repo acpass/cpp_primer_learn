@@ -2,6 +2,7 @@
 #include <deque>
 #include <forward_list>
 #include <iostream>
+#include <print>
 #include <stdexcept>
 #include <vector>
 using namespace std;
@@ -19,11 +20,11 @@ int main() {
   vector<int>::difference_type diff = cit - it;
   vector<int>::reference int_ref = v[0]; // elem's ref
   vector<int>::const_reference int_cref = v[3];
+  println("sz: {} int_v: {} diff: {} int_ref: {} int_cref: {}", sz, int_v, diff,
+          int_ref, int_cref);
 
   *it = 1;
   // *cit = 1;  not a lvalue
-
-  auto citer = cv.begin(); // call the const version of begin
 
   v.swap(v2);
 
@@ -98,9 +99,9 @@ int main() {
 
   auto a1 = fl.front();
   cout << a1 << endl;
-  decltype(fl.front()) a2 =
-      fl.front(); // decltype return a type of the ref, but auto return the
-                  // origin type which is int;
+  // decltype(fl.front()) a2 =
+  // fl.front(); // decltype return a type of the ref, but auto return the
+  // origin type which is int;
 
   vec_insert.erase(vec_insert.begin(), vec_insert.begin());
 

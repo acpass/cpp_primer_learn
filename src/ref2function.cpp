@@ -20,10 +20,10 @@ typedef int (*func_pointer2)(int);
 int main() {
   int (&rf)(int) = func;
   int (*pf)(int) = func;
-  func_pointer pf2 = func;
-  func_pointer2 pf3 = func;
+  // func_pointer pf2 = func;
+  // func_pointer2 pf3 = func;
   func_pointer pf4 = func_retfunc();
-  func_alias *pf5 = func_retfunc2();
+  // func_alias *pf5 = func_retfunc2();
   cout << rf(12) << ' ' << pf(11) << pf4(321) << endl;
   return 0;
 }

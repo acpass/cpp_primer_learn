@@ -61,7 +61,9 @@ public:
     return name_hidden_base::mem;
   }
 
-  void foo_hidden_test(int i) { std::cout << "derived called" << std::endl; }
+  void foo_hidden_test(int) {
+    std::cout << "derived called" << mem << std::endl;
+  }
 };
 
 void hidden_test(const name_hidden_base &obj);

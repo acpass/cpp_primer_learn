@@ -29,7 +29,7 @@ void thrower() {
       throw std::runtime_error("throw in try");
       std::cout << "after throw" << '\n';
 
-      int a = 1;
+      // int a = 1;
     } catch (std::runtime_error err) {
       std::cerr << "catch in func inner try: ";
       std::cerr << err.what() << '\n';

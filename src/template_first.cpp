@@ -7,7 +7,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-void real_foo(int a, int &b, int &&c) {
+void real_foo(int, int &b, int &&) {
   b += 1;
   cout << "succussful called" << endl;
 }
@@ -21,7 +21,7 @@ int main() {
   cout << endl;
 
   std::string s_arr[3] = {"a", "2", "2"};
-  auto s_point = s_arr;
+  // auto s_point = s_arr;
   cout << array_size(s_arr) << endl;
   cout << array_size("121") << endl;
   cout << endl;

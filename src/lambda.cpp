@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <functional>
 #include <iostream>
 #include <vector>
@@ -73,7 +74,7 @@ int main() {
   i = 1;
 
   cout << i << ' ';
-  [](int a) { a = 5; }(ref(i));
+  // [](auto a) { a = 5; }(ref(i));
   cout << i << endl;
 
   return 0;

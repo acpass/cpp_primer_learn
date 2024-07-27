@@ -17,8 +17,8 @@ int main() {
   return 0;
 }
 
-void print(string str) { cout << "string" << endl; }
+void print(string) { cout << "string" << endl; }
 
-void print(long lon) { cout << "long" << endl; }
+void print(long) { cout << "long" << endl; }
 
-void print(int i) { cout << "int" << endl; }
+void print(int) { cout << "int" << endl; }

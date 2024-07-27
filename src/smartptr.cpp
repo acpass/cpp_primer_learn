@@ -7,8 +7,8 @@
 class Base {
 public:
   Base() { std::println("Construct B"); };
-  Base(Base &B) { std::println("Copy B"); }
-  Base(Base &&B) { std::println("Move B"); }
+  Base(Base &) { std::println("Copy B"); }
+  Base(Base &&) { std::println("Move B"); }
   virtual ~Base() = default;
 
   virtual void print() const { std::println("Print B"); }
@@ -84,6 +84,7 @@ int main() {
 
   auto b2 = get_B();
   // b inside get_B is actually constructed in the location of b2
+  lambda(1);
 
   return 0;
 }
